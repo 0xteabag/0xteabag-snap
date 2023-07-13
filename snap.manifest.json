@@ -1,0 +1,31 @@
+{
+  "version": "0.1.0",
+  "description": "0xTeabag Companion Snap",
+  "proposedName": "0xTeabag staging",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+  },
+  "source": {
+    "shasum": "ypaqGvrFBmm8ZrINpi2mrf7OA/tamaLGuZwRhq6Ro04=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "iconPath": "images/icon_staging.svg",
+        "packageName": "snap",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "snap_dialog": {},
+    "snap_manageState": {},
+    "endowment:rpc": {
+      "dapps": true,
+      "snaps": false
+    },
+    "endowment:transaction-insight": {},
+    "endowment:network-access": {}
+  },
+  "manifestVersion": "0.1"
+}
