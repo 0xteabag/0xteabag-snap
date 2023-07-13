@@ -8212,7 +8212,7 @@
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.NODE_ENV = exports.IS_PRODUCTION = exports.IS_DEVELOPMENT = exports.API_URL = void 0;
+      exports.SNAP_HOME = exports.NODE_ENV = exports.IS_PRODUCTION = exports.IS_DEVELOPMENT = exports.API_URL = void 0;
       const NODE_ENV = env("staging", 'string');
       exports.NODE_ENV = NODE_ENV;
       const IS_DEVELOPMENT = NODE_ENV === 'development';
@@ -8221,6 +8221,8 @@
       exports.IS_PRODUCTION = IS_PRODUCTION;
       const API_URL = env("https://api-staging.0xteabag.io/", 'string');
       exports.API_URL = API_URL;
+      const SNAP_HOME = env("https://staging.0xteabag-snap.pages.dev/", 'string');
+      exports.SNAP_HOME = SNAP_HOME;
       function env(envVar, type, defaultVal) {
         let val = envVar;
         val = validateRequiredOrApplyDefault(envVar, val, defaultVal);
@@ -8388,10 +8390,20 @@
       var _snapsUi = require("@metamask/snaps-ui");
       var _apiClient = require("./apiClient");
       var _gql = require("./gql");
+      var _storage = require("./storage");
+      var _env = require("./env");
       const onTransaction = async ({
         transaction
       }) => {
         console.log('transaction', transaction);
+        const authData = await _storage.storage.get('auth');
+        if (authData) {
+          return showLabelsForTx(transaction, authData);
+        }
+        return showAuthPrompt();
+      };
+      exports.onTransaction = onTransaction;
+      async function showLabelsForTx(transaction, authData) {
         const {
           from,
           to,
@@ -8419,7 +8431,7 @@
         } else {
           contentText += `\n\n`;
           to.forEach(node => {
-            contentText += `🔸${shortAddr(node.hash)} - **${node.label}** _(${node.orgName} Team)_\n`;
+            contentText += `🔹${shortAddr(node.hash)} - **${node.label}** _(${node.orgName} Team)_\n`;
           });
         }
         contentText += `_**Data:**_ `;
@@ -8435,11 +8447,11 @@
             const group = groups[key];
             if (group.length === 1) {
               const node = group[0];
-              contentText += `🔸${shortAddr(node.hash)} - **${node.label}** _(${node.orgName} Team)_\n`;
+              contentText += `🔹${shortAddr(node.hash)} - **${node.label}** _(${node.orgName} Team)_\n`;
             } else {
-              contentText += `🔸${shortAddr(group[0].hash)}:\n`;
+              contentText += `🔹${shortAddr(group[0].hash)}:\n`;
               group.forEach(node => {
-                contentText += `\t🔹**${node.label}** _(${node.orgName} Team)_\n`;
+                contentText += `  🔸**${node.label}** _(${node.orgName} Team)_\n`;
               });
             }
           });
@@ -8447,12 +8459,12 @@
             contentText += `🔸${shortAddr(node.hash)} - **${node.label}** _(${node.orgName} Team)_\n`;
           });
         }
-        contentText += `\n\n_Depending on the transaction type, the **To** address shown by Metamask might appear in the **Data** field presented above (e.g. ERC-20 transfers)._`;
+        contentText += `\n\n➖➖➖`;
+        contentText += `\n\n_Connected as **${authData.email}**_`;
         return {
           content: (0, _snapsUi.text)(contentText)
         };
-      };
-      exports.onTransaction = onTransaction;
+      }
       async function getLabelsForTx(tx) {
         const {
           data
@@ -8497,9 +8509,17 @@
         });
         return groups;
       }
+      async function showAuthPrompt() {
+        const contentText = `You are not connected to 0xTeabag.\n\nGo to **${_env.SNAP_HOME}** and connect your 0xTeabag account.`;
+        return {
+          content: (0, _snapsUi.text)(contentText)
+        };
+      }
     }, {
       "./apiClient": 84,
+      "./env": 86,
       "./gql": 87,
+      "./storage": 92,
       "@metamask/snaps-ui": 7,
       "buffer/": 30
     }],
