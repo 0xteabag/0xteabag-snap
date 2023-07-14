@@ -1,17 +1,17 @@
 {
-  "version": "0.1.5",
+  "version": "0.2.1",
   "description": "0xTeabag Companion Snap",
-  "proposedName": "0xTeabag staging",
+  "proposedName": "0xTeabag",
   "repository": {
     "type": "git",
     "url": "https://github.com/0xteabag/0xteabag-snap.git"
   },
   "source": {
-    "shasum": "D7qeWw6bF8MU0lD9JkKyXggEW/cY69H1o0mNLwSk0HM=",
+    "shasum": "DsNB7RQ59Fh+baPl8lGSKSVa5rlNJd/hYns1kjUFVVs=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
-        "iconPath": "images/icon_staging.svg",
+        "iconPath": "images/icon_production.svg",
         "packageName": "snap",
         "registry": "https://registry.npmjs.org/"
       }

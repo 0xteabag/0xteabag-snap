@@ -1,6 +1,6 @@
 {
-  "name": "@0xteabag/snap-staging",
-  "version": "0.1.5",
+  "name": "@0xteabag/snap",
+  "version": "0.2.1",
   "description": "0xTeabag Metamask Snap",
   "main": "dist/index.js",
   "scripts": {

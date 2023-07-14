@@ -1,3 +1,3 @@
-# 0xTeabag MetaMask Snap - STAGING version
+# 0xTeabag MetaMask Snap
 
-Nothing to see here, move along.
+Companion Snap for 0xTeabag browser extension.

@@ -8213,15 +8213,15 @@
         value: true
       });
       exports.SNAP_HOME = exports.NODE_ENV = exports.IS_PRODUCTION = exports.IS_DEVELOPMENT = exports.API_URL = void 0;
-      const NODE_ENV = env("staging", 'string');
+      const NODE_ENV = env("production", 'string');
       exports.NODE_ENV = NODE_ENV;
       const IS_DEVELOPMENT = NODE_ENV === 'development';
       exports.IS_DEVELOPMENT = IS_DEVELOPMENT;
       const IS_PRODUCTION = NODE_ENV === 'production';
       exports.IS_PRODUCTION = IS_PRODUCTION;
-      const API_URL = env("https://api-staging.0xteabag.io/", 'string');
+      const API_URL = env("https://api.0xteabag.io/", 'string');
       exports.API_URL = API_URL;
-      const SNAP_HOME = env("https://staging.0xteabag-snap.pages.dev/", 'string');
+      const SNAP_HOME = env("https://metamask.0xteabag.io/", 'string');
       exports.SNAP_HOME = SNAP_HOME;
       function env(envVar, type, defaultVal) {
         let val = envVar;
