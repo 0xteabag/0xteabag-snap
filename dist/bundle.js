@@ -8415,33 +8415,35 @@
           contentText += `_No labels_\n\n`;
         } else if (from.length === 1) {
           const node = from[0];
-          contentText += `${shortAddr(node.hash)} - **${node.label}** _(${node.orgName} Team)_`;
+          contentText += `**${node.label}** _(${node.orgName} Team)_\n\n`;
         } else {
           contentText += `\n`;
           from.forEach(node => {
-            contentText += `🔸${shortAddr(node.hash)} - **${node.label}** _(${node.orgName} Team)_\n`;
+            contentText += `🔸**${node.label}** _(${node.orgName} Team)_\n`;
           });
+          contentText += `\n`;
         }
         contentText += `_**To**_ (${shortAddr(transaction.to)}): `;
         if (to.length === 0) {
           contentText += `_No labels_\n\n`;
         } else if (to.length === 1) {
           const node = to[0];
-          contentText += `${shortAddr(node.hash)} - **${node.label}** _(${node.orgName} Team)_`;
+          contentText += `**${node.label}** _(${node.orgName} Team)_\n\n`;
         } else {
-          contentText += `\n\n`;
+          contentText += `\n`;
           to.forEach(node => {
-            contentText += `🔹${shortAddr(node.hash)} - **${node.label}** _(${node.orgName} Team)_\n`;
+            contentText += `🔹**${node.label}** _(${node.orgName} Team)_\n`;
           });
+          contentText += `\n`;
         }
         contentText += `_**Data:**_ `;
         if (data.length === 0) {
           contentText += `_No labels_\n\n`;
-        } else if (to.length === 1) {
+        } else if (data.length === 1) {
           const node = data[0];
           contentText += `${shortAddr(node.hash)} - **${node.label}** _(${node.orgName} Team)_`;
         } else {
-          contentText += `\n\n`;
+          contentText += `\n`;
           const groups = groupBy(data, 'hash');
           Object.keys(groups).forEach(key => {
             const group = groups[key];

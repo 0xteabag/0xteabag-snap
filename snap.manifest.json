@@ -1,5 +1,5 @@
 {
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "0xTeabag Companion Snap",
   "proposedName": "0xTeabag",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/0xteabag/0xteabag-snap.git"
   },
   "source": {
-    "shasum": "DsNB7RQ59Fh+baPl8lGSKSVa5rlNJd/hYns1kjUFVVs=",
+    "shasum": "ACg9UMky2Byy5Bu2r1COL296n/UwnRhHoPZfitfQ23w=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
