@@ -55,7 +55,5 @@ async function getAll() {
     params: { operation: 'get' },
   });
 
-  console.log('getAll', persistedData);
-
   return persistedData;
 }
